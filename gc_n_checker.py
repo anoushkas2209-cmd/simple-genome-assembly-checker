@@ -1,5 +1,4 @@
 def gc_content(contigs):
-    """Calculates overall GC% = (G + C) / (A + C + G + T) * 100. N bases are ignored."""
     all_bases = "".join(str(contig.seq).upper() for contig in contigs)
     gc = all_bases.count("G") + all_bases.count("C")
     valid = sum(all_bases.count(b) for b in "ACGT")
@@ -9,13 +8,11 @@ def gc_content(contigs):
 
 
 def n_count(contigs):
-    """Counts the total number of N (gap / unknown) bases in the assembly."""
     all_bases = "".join(str(contig.seq).upper() for contig in contigs)
     return all_bases.count("N")
 
 
 def plot_gc_distribution(contigs):
-    """Calculates GC% for each individual contig and plots a histogram."""
     gc_percentages = []
     
     for contig in contigs:
@@ -33,3 +30,15 @@ def plot_gc_distribution(contigs):
     plt.grid(axis='y', alpha=0.75)
     plt.tight_layout()
     plt.show()
+
+contigs = list(SeqIO.parse(fasta_trial.fasta, "fasta"))
+
+overall_gc = gc_content(contigs)
+total_ns = n_count(contigs)
+
+print(f"--- Results for {fasta_filename} ---")
+print(f"Total Contigs Read: {len(contigs)}")
+print(f"Overall GC Content: {overall_gc:.2f}%")
+print(f"Total 'N' Count (Unknown Bases): {total_ns}")
+
+plot_gc_distribution(contigs)
