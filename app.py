@@ -11,8 +11,7 @@ if uploaded_file is not None:
     from io import StringIO
     string_data = uploaded_file.getvalue().decode("utf-8")
     contigs = list(SeqIO.parse(StringIO(string_data), "fasta"))
-
-total_len, total_pieces, n50, l50 = calculate_length_stats(contigs)
+    total_len, total_pieces, n50, l50 = calculate_length_stats(contigs)
     overall_gc = gc_content(contigs)
     total_ns = n_count(contigs)
 
@@ -35,6 +34,7 @@ total_len, total_pieces, n50, l50 = calculate_length_stats(contigs)
     ax.hist(gc_percentages, bins=5, color='skyblue', edgecolor='black')
     ax.set_title("GC Content Distribution Across Contigs")
     ax.set_xlabel("GC Content (%)")
-    ax.set_ylabel("Number of Contigs")
+
+    
     
     st.pyplot(fig)
