@@ -1,6 +1,6 @@
 import streamlit as st
 from Bio import SeqIO
-from Bio.SeqUtils import gc_fraction  # Added this tool to help build your graph
+from Bio.SeqUtils import gc_fraction  
 import matplotlib.pyplot as plt
 from io import StringIO
 
