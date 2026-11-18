@@ -38,20 +38,20 @@ if uploaded_file is not None:
     gc_percentages = [gc_fraction(rec.seq) * 100 for rec in contigs]
 
     
-    # Draw the line graph
+    
     fig, ax = plt.subplots(figsize=(6, 3))
     
-    # Create a sequence of numbers (1, 2, 3...) for the X-axis based on how many contigs there are
+   
     contig_numbers = range(1, len(gc_percentages) + 1)
     
-    # Plot the line graph with markers at each data point
+    
     ax.plot(contig_numbers, gc_percentages, color='dodgerblue', marker='o', linestyle='-')
     
     ax.set_title("GC Content Across Contigs")
     ax.set_xlabel("Contig Number")
     ax.set_ylabel("GC Content (%)")
     
-    # Ensure the X-axis only uses whole numbers (you can't have half a contig)
+    
     ax.set_xticks(contig_numbers)
     
     st.pyplot(fig)
