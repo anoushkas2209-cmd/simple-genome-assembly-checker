@@ -10,7 +10,7 @@ from gc_n_checker import gc_content, n_count
 
 st.title("Genome Assembly Quality Checker")
  
-uploaded_file = st.file_uploader("Upload a .fasta file", type=["fasta", "fa", "fna"])
+uploaded_file = st.file_uploader("Upload a .fasta, .fa, or .fna file", type=["fasta", "fa", "fna"])
 
 if uploaded_file is not None:
   
